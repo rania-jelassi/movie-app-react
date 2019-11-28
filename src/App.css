@@ -20,3 +20,10 @@
 .App-link {
   color: #09d3ac;
 }
+.head {
+  display: flex;
+  justify-content: center;
+}
+.head-etoile {
+  margin-top: 31px;
+}
