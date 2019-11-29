@@ -5,6 +5,9 @@ import MovieSearch from "./components/MovieSearch/MovieSearch.js";
 import Rate from "./components/Rate/Rate";
 import Movielist from "./components/MovieList /MovieList.js";
 import Add from "./components/Add/Add";
+import WithLoading from "./components/Spinner/Spinner";
+
+const ListWithLoading = WithLoading(Movielist);
 
 class App extends React.Component {
   constructor() {
@@ -13,8 +16,16 @@ class App extends React.Component {
       tab: movies,
       filtredtab: [],
       minrate: 0,
-      filteredTabByRate: []
+      filteredTabByRate: [],
+      loading: true
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+      console.log("This will run after 2 second!");
+    }, 2000);
   }
 
   ajouterMovie = x => {
@@ -45,7 +56,9 @@ class App extends React.Component {
           <MovieSearch searchFilm={this.searchFilm} />
           <Rate etoile={this.state.minrate} onChange={this.onChange} />
         </div>
-        <Movielist
+
+        <ListWithLoading
+          isLoading={this.state.loading}
           minrate={this.state.minrate}
           movies={
             this.state.filtredtab.length == 0

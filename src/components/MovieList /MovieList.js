@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./MovieList.css";
 import MovieCard from "../MovieCard";
 
-export default class MovieList extends Component {
+class MovieList extends Component {
   render() {
     return (
       <div>
@@ -17,3 +17,4 @@ export default class MovieList extends Component {
     );
   }
 }
+export default MovieList;
